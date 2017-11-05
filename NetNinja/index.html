@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="NinjaApp">
+<head>
+  <meta charset="utf-8">
+
+<base href="/"/>
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/jquery-3.2.1.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/angular-route.min.js"></script>
+
+  <script src="app.js"></script>
+  <script src="js/controllers/controller.js"></script>
+  <script src="js/directives/directive.js"></script>
+  <script src="js/services/service.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+  <!-- <ng-include src="'views/header.html'"></ng-include>  OR -->
+  <header ng-include="'views/header.html'"></header>
+<div class="container">
+
+  <ng-view></ng-view>
+</div>
+
+</body>
+</html>

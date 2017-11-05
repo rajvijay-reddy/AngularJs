@@ -1,0 +1,85 @@
+h1 {
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  box-shadow: none;
+  background-color: green;
+}
+
+li button {
+  background-color: red;
+}
+
+.form * {
+  margin: 0;
+  display: inline;
+  float: left;
+}
+
+.inputs {
+  width: 90%;
+  font-size: 3em;
+  border-radius: 10px 0 0 10px;
+  outline: none;
+  text-align: center;
+}
+
+.inputButton {
+  border: 0;
+  width:9%;
+  font-size: 3em;
+  border-radius: 0 10px 10px 0;
+}
+
+.lists {
+  display: block;
+  font-size: 2em;
+  list-style-type: none;
+  padding: 0;
+}
+
+.lists li {
+  text-align: center;
+  height: 2em;
+  background-color: gray;
+  padding: 0
+}
+
+.lists li:nth-child(odd) {
+  background-color: lightgray;
+}
+
+.lists li .item {
+  position: absolute;
+  width: 90%;
+  font-size: 1.5em;
+  left: 0;
+  height: inherit;
+}
+
+.lists li .clickable:hover {
+  cursor: pointer;
+}
+
+.lists li button {
+  float: right;
+  width: 9%;
+  height: inherit;
+  font-size: 1.5em;
+}
+
+.backButton {
+  color: white;
+}
+
+.backButton:hover {
+  cursor: pointer;
+}

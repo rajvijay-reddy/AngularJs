@@ -1,0 +1,12 @@
+<h1> <i class='fa fa-arrow-left backButton' ng-click='goBack()'></i> {{ listTitle.toUpperCase() }}</h1>
+<div class='form'>
+  <input type='text' id='todoItem' class='inputs' ng-model='item' placeholder='Add an Item'>
+  <button class='inputButton' ng-click='createItem()'> + </button>
+</div>
+<br><br>
+<ul class='lists'>
+  <li ng-repeat='item in lists[listTitle]'>
+    <span class='item'> {{ item }} </span>
+    <button ng-click='deleteItem(item)'>x</button>
+  </li>
+</ul>

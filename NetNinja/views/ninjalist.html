@@ -1,0 +1,19 @@
+<div class="content">
+  <div >
+    <button ng-click="order='name'">Order by Name</button>
+    <button ng-click="order='belt'">Order by Belt</button>
+    <input type="text" ng-model="search" placeholder="Search for a ninja" />
+    <ul >
+      <li ng-repeat="ninja in ninjas | orderBy: order | filter:search" ng-show="ninja.available">
+        <h3>{{ninja.name}} - {{ninja.rate | currency: '£'}}</h3>
+        <div class="remove" ng-click="removeNinja(ninja)">
+          X
+        </div>
+        <span class="belt" style="background: {{ninja.belt}}">{{ninja.belt}} belt</span>
+      </li>
+    </ul>
+  </div>
+  <a href="/addninja" class="btn btn-primary btn-lg btn-block">
+    <span class="glyphicon glyphicon-plus"></span>
+  Add New Ninja</a>
+</div>

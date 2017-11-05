@@ -1,0 +1,66 @@
+[
+  {
+    "type": "Green Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide",
+    "size": "Up to 1.5m and up to 300kg",
+    "lifespan": "Over 80 years",
+    "diet": "Herbivore"
+  },
+  {
+    "type": "Sea Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide",
+    "size": "Up to 1.5m and up to 300kg",
+    "lifespan": "Over 80 years",
+    "diet": "Herbivore"
+  },
+  {
+    "type": "Leatherback Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide",
+    "size": "Up to 2m and up to 900kg",
+    "lifespan": "Over 40 years",
+    "diet": "Carnivore"
+  },
+  {
+    "type": "Alligator Snapping Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide  USA",
+    "size": "Up to 60cm and up to 100kg",
+    "lifespan": "Over 20-70 years",
+    "diet": "Carnivore"
+  },
+  {
+    "type": "Olive Ridley Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide  USA",
+    "size": "Up to 10cm and up to 500kg",
+    "lifespan": "Over 50 years",
+    "diet": "Herbivore"
+  },
+  {
+    "type": "LoggerHead Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations" : "Tropical and subtropical oceans worldwide  Australia",
+    "size": "Up to 90cm and up to 200kg",
+    "lifespan2": "Over 50 years",
+    "diet": "Carnivore"
+  },
+  {
+    "type": "Hawksbill Sea Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide  Australia",
+    "size": "Up to 1m and up to 200kg",
+    "lifespan": "Over 50 years",
+    "diet": "Carnivore"
+  },
+  {
+    "type": "Kemp's Ridle Sea Turtle",
+    "image_url": "http://kids.nationalgeographic.com/animals/green-sea-turtle/#green-sea-turtle-closeup-underwater.jpg",
+    "locations": "Tropical and subtropical oceans worldwide  Australia",
+    "size": "Up to 1m and up to 200kg",
+    "lifespan": "Over 50 years",
+    "diet": "Omnivore"
+  }
+]

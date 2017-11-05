@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="turtleFacts">
+  <head>
+    <title>Turtle App</title>
+    <link href="lib/css/bootstrap.css" rel="stylesheet" />
+    <link href="lib/css/bootstrap-theme.css" rel="stylesheet" />
+    <script src="lib/js/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/list.js"></script>
+    <script src="js/controllers/quiz.js"></script>
+    <script src="js/controllers/results.js"></script>
+    <script src="js/factories/quizMetrics.js"></script>
+    <script src="js/factories/dataServices.js"></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="page-header">
+          <h1>Turtle Facts Quiz</h1>
+          <h3>Learn about all the turtles below before you decide to take
+            <strong>TURTLE QUIZ</strong>
+          </h3>
+
+        </div>
+
+        <div ng-controller="listCtrl as list" ng-hide="list.quizMetrics.quizActive || list.quizMetrics.quizActive">
+          <form class="form-inline well well-sm clearfix">
+            <span class="glyphicon glyphicon-search"></span>
+            <input type="text" placeholder="Search...." class="form-control"
+            ng-model="list.search"/>
+            <button class="btn btn-warning pull-right" ng-click="list.activateQuiz()">Start Quiz</button>
+          </form>
+          <!-- {{dummyData}} -->
+          <div class="row">
+            <div class="col-sm-6" ng-repeat="turtle in list.turtlesData | filter: list.search">
+              <div class="well well-sm">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img ng-src="{{turtle.image_url}}"
+                    class="img rounded img responsive well-image" />
+                  </div>
+                  <div class="col-md-6">
+                    <h4>{{turtle.type}}</h4>
+                    <p><strong>Locations: </strong>{{turtle.locations}}</p>
+                    <p><strong>Size: </strong>{{turtle.size}}</p>
+                    <p><strong>Average Lifespans: </strong>{{turtle.lifespan}}</p>
+                    <p><strong>Diet: </strong>{{turtle.diet}}</p>
+                    <button class="btn btn-primary pull-right"
+                    data-toggle="modal" data-target="#turtle-info"
+                    ng-click="list.changeActiveTurtle(turtle)">Learn More</button>
+                  </div>
+                </div><!-- row -->
+              </div><!-- well -->
+          </div><!-- col-md-6 -->
+        </div>
+
+        <div class="modal" id="turtle-info">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2>{{list.activeTurtle.type}}</h2>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-xs-8 col-xs-offset-2">
+                      <img ng-src="{{list.activeTurtle.image_url}}"
+                      class="img-rounded img-responsive"/>
+                    </div>
+                  </div>
+                  <div class="row top-buffer">
+                    <div class="col-md-6">
+                      <p><strong>Locations: </strong>{{list.activeTurtle.locations}}</p>
+                      <p><strong>Size: </strong>{{list.activeTurtle.size}}</p>
+                      <p><strong>Lifespans: </strong>{{list.activeTurtle.lifespan}}</p>
+                      <p><strong>Diet: </strong>{{list.activeTurtle.diet}}</p>
+                    </div>
+                    <div class="col-xs-12 top-buffer">
+                                	<!-- angular data binding and data-dismiss for bootstrap -->
+                                    <p>{{list.activeTurtle.description}}</p>
+                                    <button class="btn btn-danger pull-right"
+                                        data-dismiss="modal">Close</button>
+                                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div> <!--End listCtrl div -->
+
+<!-- ng-class takes an object -->
+    <div ng-controller="quizCtrl" ng-show="quizMetrics.quizActive">
+      <div class="row">
+        <div class="col-xs-8">
+          <h2>Progress:</h2>
+          <div class="btn-toolbar">
+            <button class="btn" ng-repeat="question in questions"
+              ng-class="{'btn-info':question.selected !== null,
+                'btn-danger':question.selected === null}"
+                ng-click="setActiveQuestion($index)">
+                <span class="glyphicon"
+                  ng-class="{'glyphicon-pencil':question.selected !== null,
+                  'glyphicon-question-sign':question.selected === null  }">
+                </span>
+              </button>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <div class="row">
+            <h4>legend:</h4>
+            <div class="col-sm-4">
+              <button class="btn btn-info">
+                <span class="glyphicon glyphicon-pencil"></span>
+              </button>
+              <p>Answered</p>
+          </div>
+          <div class="col-sm-4">
+            <button class="btn btn-danger">
+              <span class="glyphicon glyphicon-question-sign"></span>
+            </button>
+            <p>Unanswered</p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- progress area -->
+
+    <div class="row">
+      <div class="alert alert-danger" ng-show="error">
+        Error! You have not answered all the questions.
+        <button class="close" ng-click="error = false">&times</button>
+      </div>
+        <h3>Question:</h3>
+        <div class="well well-sm" ng-hide="finalise">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>
+                {{activeQuestion + 1 + ". " + questions[activeQuestion].text}}
+
+              </h4>
+
+              <div class="row" ng-if="questions[activeQuestion].type === 'text'">
+                <div class="col-sm-6" ng-repeat="answer in questions[activeQuestion].possibilites">
+                  <h4 class="answer"
+                    ng-class="{'bg-info': $index === questions[activeQuestion].selected}"
+                    ng-click="selectAnswer($index)">
+                    {{answer.answer}}</h4>
+<!--  $index is the iteration index such as for i, here it plays the role of var 'i'-->
+                </div>
+              </div>
+
+              <div class="row" ng-if="questions[activeQuestion].type === 'image'">
+                <div class="col-sm-6" ng-repeat="answer in questions[activeQuestion].possibilites">
+                  <div class="image-answer"
+                  ng-class="{'image-selected': $index === questions[activeQuestion].selected}"
+                  ng-click="selectAnswer($index)">
+                    <img ng-src="{{answer.answer}}" />
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+
+        <button class ="btn btn-warning pull-right" ng-click="questionAnswered()">Continue</button>
+        <div class="well well-sm" ng-show="finalise">
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Are you sure you want to submit your answer?</h3>
+              <button class="btn btn-success" ng-click="finaliseAnswers()">Yes</button>
+              <button class="btn btn-danger" ng-click="finalise=false">No</button>
+            </div>
+
+        </div>
+        </div>
+    </div><!-- question row-->
+
+
+
+</div><!-- quiz controller-->
+<!-- <div ng-controller="resultCtrl as result" ng-show="result.quizMetrics.resultsActive">
+  <h1>Hello World</h1>
+</div> -->
+</div>
+</div>
+  </body>
+</html>
